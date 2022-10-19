@@ -14,6 +14,74 @@ router.get('/students', function (req, res){
     res.send(students)
 })
 
+router.get('/movies', function (req, res){
+    console.log("The path params in the request are : ", req.params)
+    const movies=['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']                  //problem 1
+    res.send(movies)
+})
+
+//                 /1
+// router.get('/movies/:indexNumber', function (req, res){
+//     console.log("The path params in the request are : ", req.params)
+//     const movies=['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']                  //problem 2
+//     const index=req.params.indexNumber
+//     res.send(movies[index])
+// })
+
+
+router.get('/movies/:indexNumber', function (req, res){
+    console.log("The path params in the request are : ", req.params)
+    const movies=['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins']                  //problem 3
+    let index=req.params.indexNumber
+    if(movies.length <= index || index<0){
+    res.send("use a valid index")}
+    res.send(movies[index])
+})
+
+
+//problem 4
+router.get('/films', function (req, res){
+    console.log("The path params in the request are : ", req.params)
+    const films=[ {
+        "id": 1,
+        "name": "The Shining"
+       }, {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+    res.send(films)
+})
+
+//problem 5
+router.get('/films/:filmId', function (req, res){
+    console.log("The path params in the request are : ", req.params)
+    const films=[ {
+        "id": 1,
+        "name": "The Shining"
+       }, {
+        "id": 2,
+        "name": "Incendies"
+       }, {
+        "id": 3,
+        "name": "Rang de Basanti"
+       }, {
+        "id": 4,
+        "name": "Finding Nemo"
+       }]
+       const id=(Number(req.params.filmId))
+       if(id>films.length || id<=0){
+        res.send("Error: No film exists with such id")
+    }else{
+        res.send(films[id-1])
+        }
+})
+
 
 // Example 1 for path params
 router.get('/students/:studentName', function(req, res){
