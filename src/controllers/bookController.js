@@ -3,9 +3,8 @@ const BookModel= require("../models/bookModel")
 
 const createBook= async function (req, res) {
     let data= req.body
-
     let savedData= await BookModel.create(data)
-    res.send({msg: savedData})
+    res.send({Your_Books : savedData})
 }
 
 const getBooksData= async function (req, res) {
@@ -47,6 +46,7 @@ const getRandomBooks= async function(req,res){
     });
     res.send({Your_Books: GT500});
 };
+
 
     // let allBooks= await BookModel.find( ).count() // COUNT
 
