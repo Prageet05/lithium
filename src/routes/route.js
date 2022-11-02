@@ -18,4 +18,8 @@ router.get("/getBooksData", bookController.getBooksData)
 
 router.get("/getBooksWithAuthorDetails", bookController.getBooksWithAuthorDetails)
 
+router.post("/updateBookPrice",bookController.updateBookPrice)
+
+router.get("/bookCost",bookController.bookCost)
+
 module.exports = router;
